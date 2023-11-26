@@ -78,16 +78,16 @@ function getOne(req, res){
   })
 }
 
-/** UPDATE ONE SQL
+/** UPDATE ONE JS
  * @param {express.Request} req
  * @param {express.Response} res 
  */
-function updateOneSql(req, res){
+function updateOneJs(req, res){
   sequelize.authenticate()
   .then(() => {
     return Customers.findByPk(req.params.CustomerId);
   }).then((foundCust) => {
-    foundCust.update({...req.body})
+    foundCust.CompanyName = req.body.CompanyName
     return foundCust.save()
   }).then((customers) => {
     res.json(customers)
@@ -96,11 +96,11 @@ function updateOneSql(req, res){
   })
 }
 
-/** UPDATE ONE JS
+/** UPDATE ONE SQL
  * @param {express.Request} req
  * @param {express.Response} res 
  */
-function updateOneJs(req, res){
+function updateOneSql(req, res){
   sequelize.authenticate()
   .then(() => {
     return Customers.update(
