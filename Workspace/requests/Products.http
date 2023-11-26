@@ -1,0 +1,35 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+
+### CREATE ONE
+POST {{host}}/products
+Accept: application/json
+Content-Type: application/json
+
+{
+  "ProductName": "potato nul",
+  "Discontinued": false,
+  "UnitsOnOrder": 3
+}
+
+### READ ALL
+GET {{host}}/products
+Accept: application/json
+
+### READ WHERE
+GET {{host}}/products/cndtn?Discontinued=false
+Accept: application/json
+
+### READ ONE
+GET {{host}}/products/4
+Accept: application/json
+
+### DELETE ALL // TODO return deleted elem
+DELETE {{host}}/products/
+Accept: application/json
+
+### DELETE ONE // TODO return deleted elem
+DELETE {{host}}/products/4
+Accept: application/json

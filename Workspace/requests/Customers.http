@@ -1,0 +1,92 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+
+### CREATE ONE
+POST {{host}}/customers
+Accept: application/json
+Content-Type: application/json
+
+{
+  "CompanyName": "bonkur"
+}
+
+### CREATE ONE KO -> Validator in Customers.js
+POST {{host}}/customers
+Accept: application/json
+Content-Type: application/json
+
+{
+  "CompanyName": "coucou"
+}
+
+### CREATE ONE WHERE
+POST {{host}}/customers
+Accept: application/json
+Content-Type: application/json
+
+{
+  "CompanyName": "bonkur",
+  "Country": "Tuvalu",
+  "City": "BigCity"
+}
+
+### READ ALL
+GET {{host}}/customers
+Accept: application/json
+
+### READ ALL Tricked
+GET {{host}}/customers/cndtn
+Accept: application/json
+
+### READ WHERE
+GET {{host}}/customers/cndtn?Country=Tuvalu&City=BigCity
+Accept: application/json
+
+### READ ONE
+GET {{host}}/customers/1
+Accept: application/json
+
+### READ ALL LITTERAL
+GET {{host}}/customers/litteral
+Accept: application/json
+
+### UPDATE ONE SQL
+PUT {{host}}/customers/sql/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "CustomerId": 1,
+  "CompanyName": "NOT bonkur",
+  "ContactName" : "jean"
+}
+
+### UPDATE ONE JS
+PUT {{host}}/customers/js/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "CompanyName": "bonkur",
+  "Country": "Tuvalu",
+  "City": "BigCity"
+}
+
+### DELETE ALL
+DELETE {{host}}/customers/
+Accept: application/json
+
+### DELETE ALL Tricked
+DELETE {{host}}/customers/cndtn
+Accept: application/json
+
+### DELETE WHERE
+DELETE {{host}}/customers/cndtn?City=DELETE
+Accept: application/json
+
+### DELETE ONE
+DELETE {{host}}/customers/23
+Accept: application/json

@@ -1,0 +1,11 @@
+{
+  "PORT" : 3001,
+  "POSTGRES" : {
+    "host" : "ex_localhost",
+    "port" : "5432",
+    "database" : "nom_de_la_db",
+    "dialect" : "postgres",
+    "username" : "username_de_db",
+    "password" : "password_de_db"  
+  }
+}

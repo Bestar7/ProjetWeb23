@@ -1,0 +1,37 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+
+### CREATE ONE
+POST {{host}}/order-details
+Accept: application/json
+Content-Type: application/json
+
+{
+  "OrderId": 10,
+  "ProductId": 10,
+  "UnitPrice": 1,
+  "Quantity": 3,
+  "Discount": 0
+}
+
+### READ ALL
+GET {{host}}/order-details
+Accept: application/json
+
+### READ WHERE
+GET {{host}}/order-details/cndtn?Quantity=3
+Accept: application/json
+
+### READ ONE
+GET {{host}}/order-details/4/4
+Accept: application/json
+
+### DELETE ALL
+DELETE {{host}}/order-details/
+Accept: application/json
+
+### DELETE ONE
+DELETE {{host}}/order-details/4/4
+Accept: application/json
